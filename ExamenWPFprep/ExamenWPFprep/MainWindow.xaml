@@ -1,0 +1,34 @@
+﻿<Window x:Class="ExamenWPFprep.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamenWPFprep"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="800">
+    <DockPanel LastChildFill="False">
+        <!--<Image Source="Rokudenashi Majutsu Koushi to Akashic Records - 01 - Large 26.jpg" Stretch="Fill" Grid.ColumnSpan="2"/>-->
+        <Menu DockPanel.Dock="Top" Background="red">
+           
+            <MenuItem Header="File">
+                <MenuItem Header="Open">
+                    <MenuItem.Icon>
+                        <Image Source="csharp.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            
+            <MenuItem Header="AAAAAAAA"></MenuItem>
+            <MenuItem Header="BBBBBBBB"></MenuItem>
+            <MenuItem Header="CCCCCCCC"></MenuItem>
+            <MenuItem Header="DDDDDDDD"></MenuItem>
+
+        </Menu>
+
+        <StatusBar DockPanel.Dock="Bottom" Background="Beige">
+            <StatusBarItem>
+                <Label>Mon App</Label>
+            </StatusBarItem>
+        </StatusBar>
+    </DockPanel>
+</Window>
