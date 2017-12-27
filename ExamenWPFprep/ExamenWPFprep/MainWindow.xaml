@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:ExamenWPFprep"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="800">
-    <DockPanel LastChildFill="False">
+    <DockPanel LastChildFill="False" Background="#6D6D6D"> <!--Mettre le LastChildFill a false pour evité d'avoir -->
         <!--<Image Source="Rokudenashi Majutsu Koushi to Akashic Records - 01 - Large 26.jpg" Stretch="Fill" Grid.ColumnSpan="2"/>-->
         <Menu DockPanel.Dock="Top" Background="red">
            
             <MenuItem Header="File">
                 <MenuItem Header="Open">
-                    <MenuItem.Icon>
+                   <MenuItem.Icon>
                         <Image Source="csharp.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
@@ -26,9 +26,69 @@
         </Menu>
 
         <StatusBar DockPanel.Dock="Bottom" Background="Beige">
+            <!--Mettre le plus en haut possible pour eviter que quelque chose est réécris au dessus-->
             <StatusBarItem>
                 <Label>Mon App</Label>
             </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Name="Heure"></TextBlock>
+            </StatusBarItem>
         </StatusBar>
+
+        <Canvas ButtonBase.Click="Canvas_Click" Margin="50,120,0,0"> <!--SI je met le canvas AVANT j'applique un margin 50 sur le grid-->
+            
+            <Button Click="Button_Click">Bubbling</Button>
+        </Canvas>
+
+        
+        <Grid Margin="-40,10,0,0"><!--J'applique un margin negatif pour corriger mon margin 50 du canvas precedent-->
+        
+        <!--
+        <Grid Margin="10">
+        -->
+
+                <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition> <!--S'adapte au contenu-->
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition><!--Prend la place qui reste -->
+                <RowDefinition Height="Auto"></RowDefinition>
+           </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="60"></ColumnDefinition><!--Contenu de taille fixe-->
+                <ColumnDefinition Width="80"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--ROW-->
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="0">
+                <Button >Appuie</Button>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="1">
+                <Button >Appuie</Button>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="2">
+                <Button >Appuie</Button>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="3">
+                <Button >Appuie</Button>
+            </Border>
+            <!--Column-->
+            <Border BorderThickness="2" BorderBrush="LightGoldenrodYellow" Grid.Column="1" Grid.Row="0">
+                <Button >Appuie</Button>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="2" Grid.Row="1">
+                <Button >Appuie</Button>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="3" Grid.Row="2">
+                
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="2" Grid.Row="3">
+                
+            </Border>
+        </Grid>
+        
+        
+        
     </DockPanel>
 </Window>
