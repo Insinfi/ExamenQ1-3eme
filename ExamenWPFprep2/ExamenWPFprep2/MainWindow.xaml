@@ -55,6 +55,18 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding Nom}"></Label>
+                        <Label Content="{Binding Prenom}">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Setter Property="Foreground" Value="black"></Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="{Binding Prenom}" Value="Jean">
+                                            <Setter Property="Foreground" Value="Red"></Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
                     </StackPanel>
                 </DataTemplate>  
             </ListBox.ItemTemplate>
