@@ -114,8 +114,8 @@
         <local:CustomProgressBar AlertLevel="69" x:Name="pgb" Alert="pgb_Alert_1" Margin="150" Width="100" Minimum="0" Maximum="100" Value="0"></local:CustomProgressBar>
 
         <CheckBox Margin="-300,250,0,0" Name="Accept">Accepter les conditions</CheckBox>
-        <!--<Button Command="ApplicationCommands.Close" Margin="-500,250,0,0" Height="30" Width="60" >Quitter</Button>-->
-        <!--<Button Command="ApplicationCommands.Close" CommandTarget="{Binding ElementName=MainWindow}"  Margin="-300,250,0,0" Height="30" Width="90" >Quitter TARGET</Button>-->
+        <Button Command="ApplicationCommands.Close" Margin="-500,250,0,0" Height="30" Width="60" >Quitter</Button>
+        <Button Command="ApplicationCommands.Close" CommandTarget="{Binding ElementName=MainWindow}"  Margin="-300,250,0,0" Height="30" Width="90" >Quitter TARGET</Button>
 
 
     </DockPanel>

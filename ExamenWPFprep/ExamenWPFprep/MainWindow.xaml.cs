@@ -69,8 +69,7 @@ namespace ExamenWPFprep
         private void Canvas_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Evenement au niveau du Canvas");
-            Window win = new Window1();
-            win.Show();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
