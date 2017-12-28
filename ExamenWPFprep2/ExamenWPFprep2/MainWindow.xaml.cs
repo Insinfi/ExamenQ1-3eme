@@ -20,8 +20,10 @@ namespace ExamenWPFprep2
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainWindowViewModel mwvm { get; set; }
         public MainWindow()
         {
+            mwvm = new MainWindowViewModel();
             InitializeComponent();
         }
     }

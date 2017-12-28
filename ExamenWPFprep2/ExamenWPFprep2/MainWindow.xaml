@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExamenWPFprep2"
+        DataContext="{Binding RelativeSource={RelativeSource Self},Path=mwvm}" 
         mc:Ignorable="d"
         Title="Partie2" Height="350" Width="525">
+    <!--DATACONTEXT-->
     <Window.Resources>
         <Style TargetType="Button"><!--s'applique par defaut a tous les controles du type choisis-->
             <Setter Property="Background" Value="DarkOrchid"></Setter>
@@ -46,5 +48,8 @@
         <Button Style="{StaticResource myButton}" Margin="10,0,0,0"></Button>
         <Button Style="{StaticResource Over}" Margin="10,0,0,0">Triggered</Button>
         <TextBox Margin="-400,10,0,200" Width="181">je suis le contenu</TextBox>
+        <ListBox ItemsSource="{Binding UsersList, Mode=TwoWay}" Width="150">
+            <TextBlock Text="{Binding Nom, Mode=TwoWay}" Width="150"></TextBlock>
+        </ListBox>
     </DockPanel>
 </Window>

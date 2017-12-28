@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="WPFUser" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.1.28;Initial Catalog=WPFUser;User ID=Alex123" SettingsObjectName="ExamenWPFprep2.Properties.Settings" SettingsPropertyName="WPFUserConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.GetAllUsers" Method="GetAllUsers">
+    <ElementType Name="GetAllUsersResult">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Prenom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
