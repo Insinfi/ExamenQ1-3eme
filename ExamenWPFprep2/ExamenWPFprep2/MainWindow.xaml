@@ -55,10 +55,17 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding Nom}"></Label>
+                        <Label Name="TriggerData" Content="{Binding Prenom}"></Label>
                     </StackPanel>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Prenom}" Value="Jean">
+                            <Setter TargetName="TriggerData" Property="Foreground" Value="Red"></Setter>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
                 </DataTemplate>  
             </ListBox.ItemTemplate>
             <!--<TextBlock Text="{Binding Nom, Mode=TwoWay}" Width="150"></TextBlock>-->
         </ListBox>
     </DockPanel>
 </Window>
+    
