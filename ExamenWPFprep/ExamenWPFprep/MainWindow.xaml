@@ -6,16 +6,25 @@
         xmlns:local="clr-namespace:ExamenWPFprep"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="800">
-    <DockPanel LastChildFill="False">
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"></CommandBinding>
+        <CommandBinding Command="local:CustomCommand.Exit" Executed="CommandBinding_Executed_1" CanExecute="CommandBinding_CanExecute_1"></CommandBinding>
+    </Window.CommandBindings>
+   
+    
+    <DockPanel LastChildFill="False" Background="#6D6D6D"> <!--Mettre le LastChildFill a false pour evité d'avoir -->
         <!--<Image Source="Rokudenashi Majutsu Koushi to Akashic Records - 01 - Large 26.jpg" Stretch="Fill" Grid.ColumnSpan="2"/>-->
         <Menu DockPanel.Dock="Top" Background="#FFC50D0D">
            
             <MenuItem Header="File">
                 <MenuItem Header="Open">
-                    <MenuItem.Icon>
+                   <MenuItem.Icon>
                         <Image Source="csharp.png"></Image>
                     </MenuItem.Icon>
+                    
                 </MenuItem>
+                <MenuItem Header="Quitter" Command="local:CustomCommand.Exit"></MenuItem>
             </MenuItem>
             
             <MenuItem Header="AAAAAAAA"></MenuItem>
@@ -26,9 +35,94 @@
         </Menu>
 
         <StatusBar DockPanel.Dock="Bottom" Background="Beige">
+            <!--Mettre le plus en haut possible pour eviter que quelque chose est réécris au dessus-->
             <StatusBarItem>
                 <Label>Mon App</Label>
             </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Name="Heure"></TextBlock>
+            </StatusBarItem>
         </StatusBar>
+
+        <!--<Canvas ButtonBase.Click="Canvas_Click" Margin="280,120,00,0"> --><!--SI je met le canvas AVANT j'applique un margin 50 sur le grid--><!--
+            
+            <Button Click="Button_Click" Canvas.Left="10">Bubbling</Button>
+        </Canvas>
+        
+        <Canvas PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Margin="280,120,00,0">
+            --><!--SI je met le canvas AVANT j'applique un margin 50 sur le grid--><!--
+
+            <Button PreviewMouseLeftButtonDown="Button_PreviewMouseLeftButtonDown" Canvas.Left="10">Tunneling</Button>
+        </Canvas>-->
+
+
+        <!--<Grid Margin="-550,10,0,0">--><!--J'applique un margin negatif pour corriger mon margin 50 du canvas precedent-->
+        
+        
+        <Grid Margin="10">
+        
+
+                <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition> <!--S'adapte au contenu-->
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition><!--Prend la place qui reste -->
+                <RowDefinition Height="Auto"></RowDefinition>
+           </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="60"></ColumnDefinition><!--Contenu de taille fixe-->
+                <ColumnDefinition Width="80"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--ROW-->
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="0">
+                <Button >Appuie</Button>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="1">
+                <Button >Appuie</Button>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="2">
+                <Button >Appuie</Button>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="3">
+                <Button >Appuie</Button>
+            </Border>
+            <!--Column-->
+            <Border BorderThickness="2" BorderBrush="LightGoldenrodYellow" Grid.Column="1" Grid.Row="0">
+                <Button >Appuie</Button>
+            </Border>
+            <Border BorderThickness="1,0,1,0" BorderBrush="Black" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2">
+                <Label>Je met du text car j'aime bien</Label>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="2" Grid.Row="2" >
+                
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Grid.Column="2" Grid.Row="3">
+                
+            </Border>
+        </Grid>
+
+        <Canvas ButtonBase.Click="Canvas_Click" Margin="0,120,00,0">
+            <!--SI je met le canvas AVANT j'applique un margin 50 sur le grid-->
+
+            <Button Click="Button_Click" Canvas.Left="10">Bubbling</Button>
+        </Canvas>
+
+        <Canvas PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Margin="100,120,00,0">
+            <!--SI je met le canvas AVANT j'applique un margin 50 sur le grid-->
+
+            <Button PreviewMouseLeftButtonDown="Button_PreviewMouseLeftButtonDown" Canvas.Left="10">Tunneling</Button>
+        </Canvas>
+        
+        <local:CustomProgressBar AlertLevel="69" x:Name="pgb" Alert="pgb_Alert_1" Margin="150" Width="100" Minimum="0" Maximum="100" Value="0"></local:CustomProgressBar>
+
+        <CheckBox Margin="-300,250,0,0" Name="Accept">Accepter les conditions</CheckBox>
+        <Button Command="ApplicationCommands.Close" Margin="-500,250,0,0" Height="30" Width="60" >Quitter</Button>
+        <Button Command="ApplicationCommands.Close" CommandTarget="{Binding ElementName=MainWindow}"  Margin="-300,250,0,0" Height="30" Width="90" >Quitter TARGET</Button>
+        <CheckBox Margin="-300,50,0,0" Name="Accept2">Accepter les conditions Custom</CheckBox>
+        <Button Command="local:CustomCommand.Exit" Margin="-500,-100,0,0" Height="30" Width="90" >QuitterCustom</Button>
+
+
     </DockPanel>
 </Window>
