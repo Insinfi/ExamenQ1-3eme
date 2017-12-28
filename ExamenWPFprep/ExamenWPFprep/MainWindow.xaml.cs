@@ -108,5 +108,16 @@ namespace ExamenWPFprep
         {
             if (this.Accept != null) e.CanExecute = (bool)this.Accept.IsChecked;
         }
+
+        private void CommandBinding_Executed_1(object sender, ExecutedRoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void CommandBinding_CanExecute_1(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (Accept2 != null)
+                e.CanExecute = (bool)this.Accept2.IsChecked;
+        }
     }
 }

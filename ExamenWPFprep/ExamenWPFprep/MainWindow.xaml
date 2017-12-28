@@ -9,7 +9,9 @@
     
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"></CommandBinding>
+        <CommandBinding Command="local:CustomCommand.Exit" Executed="CommandBinding_Executed_1" CanExecute="CommandBinding_CanExecute_1"></CommandBinding>
     </Window.CommandBindings>
+   
     
     <DockPanel LastChildFill="False" Background="#6D6D6D"> <!--Mettre le LastChildFill a false pour evité d'avoir -->
         <!--<Image Source="Rokudenashi Majutsu Koushi to Akashic Records - 01 - Large 26.jpg" Stretch="Fill" Grid.ColumnSpan="2"/>-->
@@ -20,7 +22,9 @@
                    <MenuItem.Icon>
                         <Image Source="csharp.png"></Image>
                     </MenuItem.Icon>
+                    
                 </MenuItem>
+                <MenuItem Header="Quitter" Command="local:CustomCommand.Exit"></MenuItem>
             </MenuItem>
             
             <MenuItem Header="AAAAAAAA"></MenuItem>
@@ -116,6 +120,8 @@
         <CheckBox Margin="-300,250,0,0" Name="Accept">Accepter les conditions</CheckBox>
         <Button Command="ApplicationCommands.Close" Margin="-500,250,0,0" Height="30" Width="60" >Quitter</Button>
         <Button Command="ApplicationCommands.Close" CommandTarget="{Binding ElementName=MainWindow}"  Margin="-300,250,0,0" Height="30" Width="90" >Quitter TARGET</Button>
+        <CheckBox Margin="-300,50,0,0" Name="Accept2">Accepter les conditions Custom</CheckBox>
+        <Button Command="local:CustomCommand.Exit" Margin="-500,-100,0,0" Height="30" Width="90" >QuitterCustom</Button>
 
 
     </DockPanel>
