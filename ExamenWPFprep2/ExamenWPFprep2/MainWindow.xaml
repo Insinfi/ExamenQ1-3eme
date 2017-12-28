@@ -37,6 +37,8 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
+    
+    
     <DockPanel LastChildFill="False">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Open">
@@ -49,7 +51,14 @@
         <Button Style="{StaticResource Over}" Margin="10,0,0,0">Triggered</Button>
         <TextBox Margin="-400,10,0,200" Width="181">je suis le contenu</TextBox>
         <ListBox ItemsSource="{Binding UsersList, Mode=TwoWay}" Width="150">
-            <TextBlock Text="{Binding Nom, Mode=TwoWay}" Width="150"></TextBlock>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Nom}"></Label>
+                    </StackPanel>
+                </DataTemplate>  
+            </ListBox.ItemTemplate>
+            <!--<TextBlock Text="{Binding Nom, Mode=TwoWay}" Width="150"></TextBlock>-->
         </ListBox>
     </DockPanel>
 </Window>
