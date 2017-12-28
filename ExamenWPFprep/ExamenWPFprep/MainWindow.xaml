@@ -8,7 +8,7 @@
         Title="MainWindow" Height="400" Width="800">
     <DockPanel LastChildFill="False">
         <!--<Image Source="Rokudenashi Majutsu Koushi to Akashic Records - 01 - Large 26.jpg" Stretch="Fill" Grid.ColumnSpan="2"/>-->
-        <Menu DockPanel.Dock="Top" Background="red">
+        <Menu DockPanel.Dock="Top" Background="#FFC50D0D">
            
             <MenuItem Header="File">
                 <MenuItem Header="Open">
