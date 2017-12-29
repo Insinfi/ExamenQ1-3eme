@@ -9,7 +9,8 @@
         Title="Partie2" Height="350" Width="525">
     <!--DATACONTEXT-->
     <Window.Resources>
-        <Style TargetType="Button"><!--s'applique par defaut a tous les controles du type choisis-->
+        <Style TargetType="Button">
+            <!--s'applique par defaut a tous les controles du type choisis-->
             <Setter Property="Background" Value="DarkOrchid"></Setter>
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="Width" Value="100"></Setter>
@@ -36,9 +37,9 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        
-        
-       <!--DATATEMPLATE-->
+
+
+        <!--DATATEMPLATE-->
 
 
         <DataTemplate x:Key="ComboItem">
@@ -47,7 +48,7 @@
                 <TextBlock Text="{Binding Prenom}"></TextBlock>
             </StackPanel>
         </DataTemplate>
-    
+
 
         <DataTemplate x:Key="ComboItem2">
             <DockPanel>
@@ -64,7 +65,7 @@
 
         <local:UsersTemplateSelector x:Key="UsersSelector"></local:UsersTemplateSelector>
 
-        <Style TargetType="{x:Type TextBox}">
+        <Style TargetType="{x:Type TextBox}" x:Key="TestError">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="true">
                     <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},
@@ -76,11 +77,7 @@
             </Style.Triggers>
         </Style>
 
-
-        
-        
     </Window.Resources>
-
 
     <DockPanel LastChildFill="False">
         <Menu DockPanel.Dock="Top">
@@ -93,7 +90,7 @@
         <Button>Bouton</Button>
         <Button Style="{StaticResource myButton}" Margin="10,0,0,0"></Button>
         <Button Style="{StaticResource Over}" Margin="10,0,0,0">Triggered</Button>
-        <TextBox Margin="-400,10,0,200" Width="181"></TextBox>
+        <TextBox Margin="-400,10,0,200" Width="181">je suis du text</TextBox>
         <ListBox ItemsSource="{Binding UsersList, Mode=TwoWay}" Width="150" Height="80" Margin="-400,150,0,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -121,6 +118,8 @@
             <ComboBox Margin="5" Width="200" Height="50" Name="ClientListe2" ItemTemplateSelector="{StaticResource UsersSelector}" ItemsSource="{Binding Path=UsersList}"></ComboBox>
             <!--Dont miss the PATH you should not PATH-->
         </StackPanel>
+
+        <TextBox Margin="-400,150,0,0" Width="181" Height="90" Style="{StaticResource TestError}"></TextBox>
 
     </DockPanel>
 </Window>
