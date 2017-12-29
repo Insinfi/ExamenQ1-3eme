@@ -60,6 +60,7 @@
     <Compile Include="TestCentrage.xaml.cs">
       <DependentUpon>TestCentrage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UsersTemplateSelector.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
