@@ -63,6 +63,21 @@
         </DataTemplate>
 
         <local:UsersTemplateSelector x:Key="UsersSelector"></local:UsersTemplateSelector>
+
+        <Style TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},
+                        Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+                <DataTrigger Binding="{Binding Path=IsChecked, ElementName=Protect}" Value="True">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+
+        
         
     </Window.Resources>
 
@@ -78,7 +93,7 @@
         <Button>Bouton</Button>
         <Button Style="{StaticResource myButton}" Margin="10,0,0,0"></Button>
         <Button Style="{StaticResource Over}" Margin="10,0,0,0">Triggered</Button>
-        <TextBox Margin="-400,10,0,200" Width="181">je suis le contenu</TextBox>
+        <TextBox Margin="-400,10,0,200" Width="181"></TextBox>
         <ListBox ItemsSource="{Binding UsersList, Mode=TwoWay}" Width="150" Height="80" Margin="-400,150,0,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>

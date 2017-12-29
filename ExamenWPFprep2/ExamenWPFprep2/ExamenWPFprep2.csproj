@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Client.cs" />
+    <Compile Include="FieldNeededRule.cs" />
     <Compile Include="MaClasseStatic.cs" />
     <Compile Include="TestCentrage.xaml.cs">
       <DependentUpon>TestCentrage.xaml</DependentUpon>
