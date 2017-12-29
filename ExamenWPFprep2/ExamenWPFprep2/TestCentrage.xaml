@@ -1,0 +1,21 @@
+﻿<Window x:Class="ExamenWPFprep2.TestCentrage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamenWPFprep2"
+        mc:Ignorable="d"
+        Title="TestCentrage" Height="300" Width="300"
+        DataContext="{Binding Source={x:Static local:MaClasseStatic.clientList}}">
+    <!--Ne pas oublier le path dans le datacontext-->
+    <!--DataContext="{Binding RelativeSource={RelativeSource Self}, Path=client2}">-->
+    
+    <Grid Background="Bisque" ><!--Canvas c'est de la merde pour test de centrer-->
+        <StackPanel Background="DarkGoldenrod" Height="100" Width="180" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" >
+            <TextBox Text="{Binding Path=Nom}" Margin="5,10,0,0" TextAlignment="Center" Width="150" ></TextBox> <!--TextCenter besoin de mettre une width-->
+            <TextBox Text="{Binding Path=Prenom}" Margin="5,10,0,0" TextAlignment="Center" Width="150" ></TextBox> <!--Prend le premier element de la list-->
+            <!--<TextBox Text="{Binding}" Margin="5,10,0,0" TextAlignment="Center" Width="150" ></TextBox> BTW ca fonctionne pas on peut pas faire le binding comme ca-->
+            <ComboBox ItemsSource="{Binding}" DisplayMemberPath="Nom" Margin="10"></ComboBox>
+        </StackPanel>
+    </Grid>
+</Window>

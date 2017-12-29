@@ -12,8 +12,15 @@ namespace ExamenWPFprep2
 
         public MainWindowViewModel()
         {
-            DataClasses1DataContext MyContext = new DataClasses1DataContext();
-            UsersList = new List<GetAllUsersResult>(MyContext.GetAllUsers().ToList());
+            try
+            {
+                DataClasses1DataContext MyContext = new DataClasses1DataContext();
+                UsersList = new List<GetAllUsersResult>(MyContext.GetAllUsers().ToList());
+            }
+            catch(Exception e)
+            {
+
+            }
         }
 
     }

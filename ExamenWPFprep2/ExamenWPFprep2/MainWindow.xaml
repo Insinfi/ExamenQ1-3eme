@@ -43,6 +43,7 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Open">
                 <MenuItem x:Name="Hide" Header="Afficher" IsCheckable="True" IsChecked="True"></MenuItem>
+                <MenuItem x:Name="Fenetre2" Header="Fenetre2" IsCheckable="True" IsChecked="False" Checked="Fenetre2_Checked" Unchecked="Fenetre2_Unchecked"></MenuItem>
             </MenuItem>
         </Menu>
         
