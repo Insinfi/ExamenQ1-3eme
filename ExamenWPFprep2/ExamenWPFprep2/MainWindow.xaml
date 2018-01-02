@@ -9,7 +9,8 @@
         Title="Partie2" Height="350" Width="525">
     <!--DATACONTEXT-->
     <Window.Resources>
-        <Style TargetType="Button"><!--s'applique par defaut a tous les controles du type choisis-->
+        <Style TargetType="Button">
+            <!--s'applique par defaut a tous les controles du type choisis-->
             <Setter Property="Background" Value="DarkOrchid"></Setter>
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="Width" Value="100"></Setter>
@@ -36,40 +37,90 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+
+
+        <!--DATATEMPLATE-->
+
+
+        <DataTemplate x:Key="ComboItem">
+            <StackPanel>
+                <TextBlock Margin="0,0,10,0" Text="{Binding Nom}" FontWeight="Bold"></TextBlock>
+                <TextBlock Text="{Binding Prenom}"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="ComboItem2">
+            <DockPanel>
+                <TextBlock  Name="Nom" Margin="0,0,10,0" Text="{Binding Nom}" FontWeight="Bold"></TextBlock>
+                <TextBlock Text="{Binding Prenom}"></TextBlock>
+                <TextBlock TextAlignment="Right" DockPanel.Dock="Right" Text="{Binding UserId }"></TextBlock>
+            </DockPanel>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Nom}" Value="Jean">
+                    <Setter TargetName="Nom" Property="Foreground" Value="Red"></Setter>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <local:UsersTemplateSelector x:Key="UsersSelector"></local:UsersTemplateSelector>
+
+        <Style TargetType="{x:Type TextBox}" x:Key="TestError">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},
+                        Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+                <DataTrigger Binding="{Binding Path=IsChecked, ElementName=Protect}" Value="True">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
     </Window.Resources>
-    
-    
+
     <DockPanel LastChildFill="False">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Open">
                 <MenuItem x:Name="Hide" Header="Afficher" IsCheckable="True" IsChecked="True"></MenuItem>
+                <MenuItem x:Name="Fenetre2" Header="Fenetre2" IsCheckable="True" IsChecked="False" Checked="Fenetre2_Checked" Unchecked="Fenetre2_Unchecked"></MenuItem>
             </MenuItem>
         </Menu>
         
         <Button>Bouton</Button>
         <Button Style="{StaticResource myButton}" Margin="10,0,0,0"></Button>
         <Button Style="{StaticResource Over}" Margin="10,0,0,0">Triggered</Button>
-        <TextBox Margin="-400,10,0,200" Width="181">je suis le contenu</TextBox>
-        <ListBox ItemsSource="{Binding UsersList, Mode=TwoWay}" Width="150">
+        <TextBox Margin="-400,10,0,200" Width="181">je suis du text</TextBox>
+        <ListBox ItemsSource="{Binding UsersList, Mode=TwoWay}" Width="150" Height="80" Margin="-400,150,0,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding Nom}"></Label>
-                        <Label Content="{Binding Prenom}">
-                            <Label.Style>
-                                <Style TargetType="Label">
-                                    <Setter Property="Foreground" Value="black"></Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="{Binding Prenom}" Value="Jean">
-                                            <Setter Property="Foreground" Value="Red"></Setter>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Label.Style>
-                        </Label>
+                        <Label Name="TriggerData" Content="{Binding Prenom}"></Label>
                     </StackPanel>
-                </DataTemplate>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Prenom}" Value="Jean">
+                            <Setter TargetName="TriggerData" Property="Foreground" Value="Red"></Setter>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>  
             </ListBox.ItemTemplate>
+            <!--<TextBlock Text="{Binding Nom, Mode=TwoWay}" Width="150"></TextBlock>-->
         </ListBox>
+
+        <StackPanel Orientation="Horizontal" Height="50" Margin="-100,-240,0,0">
+            <Label MinWidth="80" Height="30" Content="Choix:"></Label>
+            <ComboBox Margin="5" Width="200" Height="50" Name="ClientListe" ItemTemplate="{StaticResource ComboItem}" ItemsSource="{Binding Path=UsersList}"></ComboBox> <!--Dont miss the PATH you should not PATH-->
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Height="50" Margin="-291,-120,0,0">
+            <Label MinWidth="80" Height="30" Content="Choix:"></Label>
+            <ComboBox Margin="5" Width="200" Height="50" Name="ClientListe2" ItemTemplateSelector="{StaticResource UsersSelector}" ItemsSource="{Binding Path=UsersList}"></ComboBox>
+            <!--Dont miss the PATH you should not PATH-->
+        </StackPanel>
+
+        <TextBox Margin="-400,150,0,0" Width="181" Height="90" Style="{StaticResource TestError}"></TextBox>
+
     </DockPanel>
 </Window>
+    

@@ -120,7 +120,7 @@
         <CheckBox Margin="-300,250,0,0" Name="Accept">Accepter les conditions</CheckBox>
         <Button Command="ApplicationCommands.Close" Margin="-500,250,0,0" Height="30" Width="60" >Quitter</Button>
         <Button Command="ApplicationCommands.Close" CommandTarget="{Binding ElementName=MainWindow}"  Margin="-300,250,0,0" Height="30" Width="90" >Quitter TARGET</Button>
-        <CheckBox Margin="-300,50,0,0" Name="Accept2">Accepter les conditions Custom</CheckBox>
+        <CheckBox Margin="-300,-200,0,0" Name="Accept2" Height="20">Accepter les conditions Custom</CheckBox>
         <Button Command="local:CustomCommand.Exit" Margin="-500,-100,0,0" Height="30" Width="90" >QuitterCustom</Button>
 
 
