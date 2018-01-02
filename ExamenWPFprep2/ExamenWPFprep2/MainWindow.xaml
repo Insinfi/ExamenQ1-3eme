@@ -68,9 +68,8 @@
                             </Label.Style>
                         </Label>
                     </StackPanel>
-                </DataTemplate>  
+                </DataTemplate>
             </ListBox.ItemTemplate>
-            <!--<TextBlock Text="{Binding Nom, Mode=TwoWay}" Width="150"></TextBlock>-->
         </ListBox>
     </DockPanel>
 </Window>
