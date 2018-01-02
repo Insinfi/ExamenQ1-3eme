@@ -1,2 +1,22 @@
 ﻿body {
+    margin: 0px;
+    padding: 0px;
+}
+
+header{
+    text-align:center;
+    height:200px;
+    background-image:linear-gradient(white,grey);
+}
+
+#HeaderLabel{
+    font-size:25px;
+    font-family:fantasy;
+    height:200px;
+    line-height:200px;
+}
+
+#HeaderImg{
+    width:250px;
+    float:left;
 }
