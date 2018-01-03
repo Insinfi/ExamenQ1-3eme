@@ -1,17 +1,75 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/StyleSheet/StyleSheet1.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#HeaderImg").on("click", function () {
+                $.ajax({
+                    url: "/Home/Index/"
+                });
+            });
+
+            $(".GenreLateralNom").on("click", function () {
+                $(this).parent().children('.ArticleLateral').toggle(10);
+            });
+
+            $(".ArticleLateral").on("click", function () {
+                $(this).parent().parent().children().children('.ArticleLateral').css('background-color', '');
+                $(this).css('background-color', 'yellow');
+                var data = $(this).children(".IDToHide").val(); 
+                $.ajax({
+                    dataType: 'json',
+                    type: "POST",
+                    url: '@Url.Action("GetArticleInfo")',
+                    data: "id="+data,
+                    success: function (article) {
+                        $('#inputeNom').val(article.Nom);
+                        $('#inputeDescriptif').val(article.Descriptif);
+                        $('#inputeID').val(article.Articleid);
+                    }
+                });
+            });
+
+
+        });
+    </script>
+
 </head>
 <body>
     <header>
-        <a ><img id="HeaderImg" src="~/Images/RodoDelPorg.png" /></a><div id="HeaderLabel">Fashion HelHa on line</div>
+        <img id="HeaderImg" src="~/Images/RodoDelPorg.png" /><div id="HeaderLabel">Fashion HelHa on line</div>
     </header>
-    <div>
-        @RenderBody()
+    <div id="PaneauLateral">
+        @foreach (var Genre in @Model.GenreList)
+        {
+            <div class="GenreLateral">
+                <div class="GenreLateralNom">@Genre.GNom</div>
+                @foreach (var Article in @Model.ArticleList)
+                {
+                    if(Article.Genreid == Genre.Genreid)
+                    {
+                        <div class="ArticleLateral">
+                            @*<img class="ImageLateral" id="@Article.Articleid" src=""/>*@
+                            <input type="hidden" class="IDToHide" value="@Article.Articleid"/>
+                            <div>
+                                <div>@Article.Nom</div>
+                                <span style="color:red;">@Article.CollNom</span>
+                                <span style="float:right; margin-right:10px">@Article.Stock</span>
+                            </div>
+                        </div>
+
+                    }
+
+                }
+            </div>
+        }
     </div>
+    
+    @RenderBody()
 </body>
 </html>
