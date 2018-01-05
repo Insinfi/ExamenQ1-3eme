@@ -38,6 +38,6 @@ namespace ExamenWeb01.Controllers
             mycontext.UpdateByID( Guid.Parse(idArticle), Guid.Parse(idGenre), Guid.Parse(idColl),Nom,Des);
             return RedirectToAction("Index");
         }
-
+        
     }
 }

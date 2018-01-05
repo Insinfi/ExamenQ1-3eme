@@ -1,0 +1,104 @@
+﻿<Window x:Class="ExamenXaml4H.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamenXaml4H"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self},Path=mwvm}"
+        Title="MainWindow" Height="350" Width="700">
+    <Window.Resources>
+        <local:DateTimeToBrushConverter x:Key="dateTimeConverter"></local:DateTimeToBrushConverter>
+        <local:IsBeforeTodayConverter x:Key="IsBeforeTodayConverter" />
+        <local:PhotoConverter x:Key="PhotoConverter"></local:PhotoConverter>
+        <Style x:Key="labelCadre2" TargetType="Label">
+            <Setter Property="Foreground" Value="Blue"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+
+        <Style x:Key="BirthDay" TargetType="Label">
+            <Setter Property="Foreground" Value="{Binding Path=CurrentContact.BirthDay, Converter={StaticResource dateTimeConverter}}" />
+        </Style>
+
+    </Window.Resources>
+    
+    <DockPanel LastChildFill="False">
+        <StatusBar DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+            <StatusBarItem Content="Heure Actuel"></StatusBarItem>
+            <StatusBarItem  Name="Heure"></StatusBarItem>
+        </StatusBar>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="A propos de"></MenuItem>
+        </Menu>
+        <ListBox DockPanel.Dock="Left" ItemsSource="{Binding ContactList, Mode=TwoWay}" Width="250" SelectionChanged="ListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Green" BorderThickness="2" Padding="0,0,0,1" Width="240">
+                        <StackPanel Orientation="Horizontal">
+                            <Border BorderBrush="Gray" BorderThickness="1" Margin="0,0,10,0">
+                                <Image Width="50" Height="50" Source="{Binding Photo, Converter={StaticResource PhotoConverter}}"></Image>
+                            </Border>
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Margin="3" MinWidth="50" VerticalAlignment="Center" Content="{Binding Nom}" />
+                                    <Label MinWidth="50" Margin="3" VerticalAlignment="Center" Content="{Binding Prenom}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label MinWidth="100" Margin="3" VerticalAlignment="Center" Content="{Binding Gsm}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Margin="10,0" Width="300" >
+            <Border BorderBrush="Gray" BorderThickness="1" Margin="0,10">
+
+                <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Nom: " MinWidth="70" Style="{StaticResource labelCadre2}" ></Label>
+                        <Label Content="{Binding Path=CurrentContact.Nom, Mode=TwoWay}" Width="auto" Height="auto"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Prenom: " MinWidth="70" Style="{StaticResource labelCadre2}" ></Label>
+                        <Label Content="{Binding Path=CurrentContact.Prenom, Mode=TwoWay}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="GSM: " MinWidth="70" Style="{StaticResource labelCadre2}"></Label>
+                        <Label Content="{Binding Path=CurrentContact.Gsm, Mode=TwoWay}" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Rue: " MinWidth="70" Style="{StaticResource labelCadre2}"></Label>
+                        <Label Content="{Binding Path=CurrentContact.rue, Mode=TwoWay}" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Localité: " MinWidth="70" Style="{StaticResource labelCadre2}"></Label>
+                        <Label Content="{Binding Path=CurrentContact.Localite, Mode=TwoWay}" Width="auto"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Naissance: " MinWidth="70" Style="{StaticResource labelCadre2}"></Label>
+                        <Label Content="{Binding Path=CurrentContact.BirthDay, Mode=TwoWay}" Width="auto" Style="{StaticResource BirthDay}">
+                        </Label>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <DataGrid ItemsSource="{Binding RDVlist, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" Name="DG">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Date" Width="*" Binding="{Binding DateHeureRV,StringFormat={}{0:dd/MM/yyyy}}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Commentraire" Width="*" Binding="{Binding Commentaire}" IsReadOnly="True"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=RDVlist.DateHeureRV, Converter={StaticResource IsBeforeTodayConverter}}" Value="True">
+                                <Setter Property="Background" Value="Yellow"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+            </DataGrid>
+        </StackPanel>
+
+    </DockPanel>
+</Window>
