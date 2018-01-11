@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbCours20172018" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=127.0.0.1\SQLEXPRESS;Initial Catalog=dbCours20172018;Integrated Security=True" SettingsObjectName="FactureExamen.Properties.Settings" SettingsPropertyName="dbCours20172018ConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.GetAllClients" Method="GetAllClients">
+    <ElementType Name="GetAllClientsResult">
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FactureNombre" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FactureNombreNonAquit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
