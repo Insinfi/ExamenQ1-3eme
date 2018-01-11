@@ -22,12 +22,13 @@ namespace Exam2014WPF
     public partial class MainWindow : Window
     {
         public MainWindowViewModel mwvm { get; set; }
-        
+        Window Edit;
 
         public MainWindow()
         {
             
             mwvm = new MainWindowViewModel();
+            Edit= new EditFacture();
             InitializeComponent();
         }
 
@@ -38,6 +39,13 @@ namespace Exam2014WPF
             var lb = (ListBox)sender;
             var client = (GetInfoUserResult)lb.SelectedItem;
             mwvm.InfoFacture(client.ClientID);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Edit = new EditFacture();
+
+            Edit.ShowDialog();
         }
     }
 }

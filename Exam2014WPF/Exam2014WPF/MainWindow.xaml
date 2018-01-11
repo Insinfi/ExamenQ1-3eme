@@ -51,6 +51,9 @@
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
+
+        
+
     </Window.Resources>
     
     <DockPanel LastChildFill="False">
@@ -94,6 +97,49 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <DataGrid ItemsSource="{Binding Facture}" Height="Auto" Width="Auto"></DataGrid>
+        <DataGrid ItemsSource="{Binding Facture, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Acquit}" Value="False">
+                            <Setter Property="Foreground" Value="Red"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date" Width="*" Binding="{Binding Date,StringFormat={}{0:dd/MM/yyyy}}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Montant" Width="*" Binding="{Binding Montant}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Acquit" Width="*" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label x:Name="LabelAcquit"></Label>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Acquit}" Value="True">
+                                    <Setter TargetName="LabelAcquit" Property="Content" Value="Acquittée"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Acquit}" Value="False">
+                                    <Setter TargetName="LabelAcquit" Property="Content" Value="Retard de paiement"></Setter>
+                                    <Setter TargetName="LabelAcquit" Property="Foreground" Value="Red"></Setter>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Button_Click">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Image Source="D:\GitExamen\ExamenQ1-3eme\Exam2014WPF\Exam2014WPF\Happy.png" Height="16" Width="16"></Image>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </DockPanel>
 </Window>
