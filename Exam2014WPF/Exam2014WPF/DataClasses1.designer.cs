@@ -68,6 +68,13 @@ namespace Exam2014WPF
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<GetInfoUserResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.getInfoFacture")]
+		public ISingleResult<getInfoFactureResult> getInfoFacture([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> idclient)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idclient);
+			return ((ISingleResult<getInfoFactureResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class GetInfoUserResult
@@ -145,6 +152,68 @@ namespace Exam2014WPF
 				if ((this._FactureNombreNonAquit != value))
 				{
 					this._FactureNombreNonAquit = value;
+				}
+			}
+		}
+	}
+	
+	public partial class getInfoFactureResult
+	{
+		
+		private System.Nullable<System.DateTime> _Date;
+		
+		private System.Nullable<double> _Montant;
+		
+		private System.Nullable<bool> _Acquit;
+		
+		public getInfoFactureResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this._Date = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Montant", DbType="Float")]
+		public System.Nullable<double> Montant
+		{
+			get
+			{
+				return this._Montant;
+			}
+			set
+			{
+				if ((this._Montant != value))
+				{
+					this._Montant = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Acquit", DbType="Bit")]
+		public System.Nullable<bool> Acquit
+		{
+			get
+			{
+				return this._Acquit;
+			}
+			set
+			{
+				if ((this._Acquit != value))
+				{
+					this._Acquit = value;
 				}
 			}
 		}

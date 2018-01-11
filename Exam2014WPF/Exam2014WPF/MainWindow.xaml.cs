@@ -22,12 +22,22 @@ namespace Exam2014WPF
     public partial class MainWindow : Window
     {
         public MainWindowViewModel mwvm { get; set; }
+        
 
         public MainWindow()
         {
             
             mwvm = new MainWindowViewModel();
             InitializeComponent();
+        }
+
+        
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var lb = (ListBox)sender;
+            var client = (GetInfoUserResult)lb.SelectedItem;
+            mwvm.InfoFacture(client.ClientID);
         }
     }
 }

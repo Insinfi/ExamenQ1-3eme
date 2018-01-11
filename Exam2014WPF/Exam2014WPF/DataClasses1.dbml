@@ -8,4 +8,12 @@
       <Column Name="FactureNombreNonAquit" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.getInfoFacture" Method="getInfoFacture">
+    <Parameter Name="idclient" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="getInfoFactureResult">
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Montant" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Acquit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

@@ -9,11 +9,48 @@
         Title="MainWindow" Height="350" Width="525">
     
     <Window.Resources>
-        <Style x:Key="checked">
-            <Style.Triggers >
-                <DataTrigger Binding="{Binding Path=IsChecked,ElementName=statuscheck}"  Value="True"></DataTrigger>
-            </Style.Triggers>
-        </Style>
+        <DataTemplate x:Key="StatusOn">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label Margin="3" HorizontalAlignment="Left" Content="{Binding Nom}">
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding FactureNombreNonAquit}" Value="0">
+                                        <Setter Property="FontWeight" Value="Normal"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                    <Label Margin="3" HorizontalAlignment="Right" Content="{Binding FactureNombre}" />
+                    <Label HorizontalAlignment="Right" Content="/" />
+                    <Label Margin="3" HorizontalAlignment="Right" Content="{Binding FactureNombreNonAquit}">
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                <Setter Property="Foreground" Value="Red"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding FactureNombreNonAquit}" Value="0">
+                                        <Setter Property="FontWeight" Value="Normal"></Setter>
+                                        <Setter Property="Foreground" Value="Black"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="StatusOff">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label Margin="3" HorizontalAlignment="Left" Content="{Binding Nom}" />
+                    <Label Margin="3" HorizontalAlignment="Right" Content="{Binding FactureNombre}" />
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
     
     <DockPanel LastChildFill="False">
@@ -29,28 +66,34 @@
             <StatusBarItem HorizontalAlignment="Right" >
                 <StackPanel Orientation="Horizontal">
                     <Label>Nombre de clients:</Label>
-                    <Label>XXXXX</Label>
+                    <Label Content="{Binding Clients.Count}"></Label>
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>
 
-        <ListBox ItemsSource="{Binding Clients, Mode=TwoWay}" Width="150" Height="Auto">
+        <ListBox ItemsSource="{Binding Clients, Mode=TwoWay}" Width="150" Height="Auto" SelectionChanged="ListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    
-                    <StackPanel Orientation="Horizontal" Height="auto" Width="auto">
-                        <Label Name="Nomlb" Content="{Binding Nom}" ></Label>
-                        <TextBlock Text="{Binding FactureNombre}" ></TextBlock>
-                    </StackPanel>
-                    
-                    <DataTemplate.Triggers>
-                       
-                    </DataTemplate.Triggers>
-                    
+
+                    <ContentControl Content="{Binding}">
+                        <ContentControl.Style>
+                            <Style TargetType="ContentControl">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=IsChecked,ElementName=statuscheck}" Value="True">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource StatusOn}"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Path=IsChecked,ElementName=statuscheck}" Value="False">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource StatusOff}"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <DataGrid></DataGrid>
+        <DataGrid ItemsSource="{Binding Facture}" Height="Auto" Width="Auto"></DataGrid>
     </DockPanel>
 </Window>
