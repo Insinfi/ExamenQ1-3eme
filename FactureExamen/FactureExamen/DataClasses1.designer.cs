@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExamenWPFprep2
+namespace FactureExamen
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -22,7 +22,7 @@ namespace ExamenWPFprep2
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="WPFUser")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="dbCours20172018")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
@@ -33,7 +33,7 @@ namespace ExamenWPFprep2
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::ExamenWPFprep2.Properties.Settings.Default.WPFUserConnectionString, mappingSource)
+				base(global::FactureExamen.Properties.Settings.Default.dbCours20172018ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -62,46 +62,30 @@ namespace ExamenWPFprep2
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetAllUsers")]
-		public ISingleResult<GetAllUsersResult> GetAllUsers()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetAllClients")]
+		public ISingleResult<GetAllClientsResult> GetAllClients()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<GetAllUsersResult>)(result.ReturnValue));
+			return ((ISingleResult<GetAllClientsResult>)(result.ReturnValue));
 		}
 	}
 	
-	public partial class GetAllUsersResult
+	public partial class GetAllClientsResult
 	{
-		
-		private System.Guid _UserId;
 		
 		private string _Nom;
 		
-		private string _Prenom;
+		private System.Guid _ClientId;
 		
-		private System.Data.Linq.Binary _Photo;
+		private System.Nullable<int> _FactureNombre;
 		
-		public GetAllUsersResult()
+		private System.Nullable<int> _FactureNombreNonAquit;
+		
+		public GetAllClientsResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this._UserId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Nom
 		{
 			get
@@ -117,34 +101,50 @@ namespace ExamenWPFprep2
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenom", DbType="NVarChar(50)")]
-		public string Prenom
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid ClientId
 		{
 			get
 			{
-				return this._Prenom;
+				return this._ClientId;
 			}
 			set
 			{
-				if ((this._Prenom != value))
+				if ((this._ClientId != value))
 				{
-					this._Prenom = value;
+					this._ClientId = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Photo", DbType="Image")]
-		public System.Data.Linq.Binary Photo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactureNombre", DbType="Int")]
+		public System.Nullable<int> FactureNombre
 		{
 			get
 			{
-				return this._Photo;
+				return this._FactureNombre;
 			}
 			set
 			{
-				if ((this._Photo != value))
+				if ((this._FactureNombre != value))
 				{
-					this._Photo = value;
+					this._FactureNombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactureNombreNonAquit", DbType="Int")]
+		public System.Nullable<int> FactureNombreNonAquit
+		{
+			get
+			{
+				return this._FactureNombreNonAquit;
+			}
+			set
+			{
+				if ((this._FactureNombreNonAquit != value))
+				{
+					this._FactureNombreNonAquit = value;
 				}
 			}
 		}

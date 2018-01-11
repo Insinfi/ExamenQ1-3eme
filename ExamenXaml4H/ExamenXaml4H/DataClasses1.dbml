@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Cours20172018" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-4HEIJ3Q\MONSQL;Initial Catalog=Cours20172018;Integrated Security=True" SettingsObjectName="ExamenXaml4H.Properties.Settings" SettingsPropertyName="Cours20172018ConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.GetCurrentContact" Method="GetCurrentContact">
+    <Parameter Name="Id" Parameter="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="GetCurrentContactResult">
+      <Column Name="IdContact" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Prenom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Localite" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Gsm" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BirthDay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetRDVByID" Method="GetRDVByID">
+    <Parameter Name="Id" Parameter="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="GetRDVByIDResult">
+      <Column Name="DateHeureRV" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Commentaire" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IdRV" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetAllContact" Method="GetAllContact">
+    <ElementType Name="GetAllContactResult">
+      <Column Name="IdContact" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Prenom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Gsm" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Cours20172018" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-4HEIJ3Q\MONSQL;Initial Catalog=Cours20172018;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Cours20172018ConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.GetAllArticleByGenre" Method="GetAllArticleByGenre">
+    <Parameter Name="GenreID" Parameter="genreID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="GetAllArticleByGenreResult">
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CollNom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Articleid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetAllGenre" Method="GetAllGenre">
+    <ElementType Name="GetAllGenreResult">
+      <Column Name="GNom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Genreid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetAllArticle" Method="GetAllArticle">
+    <ElementType Name="GetAllArticleResult">
+      <Column Name="Articleid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Genreid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CollNom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPhotoByArticleID" Method="GetPhotoByArticleID">
+    <Parameter Name="Id" Parameter="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="GetPhotoByArticleIDResult">
+      <Column Name="photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetAllColl" Method="GetAllColl">
+    <ElementType Name="GetAllCollResult">
+      <Column Name="Collectionid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CollNom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetArticle" Method="GetArticle">
+    <Parameter Name="Id" Parameter="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="GetArticleResult">
+      <Column Name="Articleid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="GNom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CollNom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Genreid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Collid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Descriptif" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateByID" Method="UpdateByID">
+    <Parameter Name="Id" Parameter="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="Gid" Parameter="gid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="Cid" Parameter="cid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="Nom" Parameter="nom" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Des" Parameter="des" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

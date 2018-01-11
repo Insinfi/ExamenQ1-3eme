@@ -1,0 +1,36 @@
+﻿
+@{ 
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+<div class="IndexMain">
+    <form enctype="multipart/form-data" action="/Home/UpdateDB" method="post">
+        <input type="hidden"name="idArticle" id="inputeID"/>
+        <div class="divInput">
+            <label class="labelInput">Nom</label>
+            <input id="inputeNom" type="text" placeholder="Nom" required name="Nom"/>
+        </div>
+        <div class="divInput">
+            <label class="labelInput">Descriptif</label>
+            <textarea id="inputeDescriptif" cols="40" rows="5" name="Des" placeholder="Desicriptif"></textarea>
+        </div>
+        <div class="divInput">
+            <label class="labelInput">Genre</label>
+            <select id="inputeGenre" name="idGenre" >
+                @foreach (var Genre in @Model.GenreList)
+            {
+                <option value="@Genre.Genreid">@Genre.GNom</option>
+        }
+            </select>
+        </div>
+        <div class="divInput">
+            <label class="labelInput">Collection</label>
+            <select id="inputeCollection" name="idColl">
+                @foreach (var Coll in @Model.CollList)
+            {
+                <option value="@Coll.Collectionid">@Coll.CollNom</option>
+        }
+            </select>
+        </div>
+        <input type="submit" id="submitBT" value="Enregistrer"/>
+    </form>
+</div>

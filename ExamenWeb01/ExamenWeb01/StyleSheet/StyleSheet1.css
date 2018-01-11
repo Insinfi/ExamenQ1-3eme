@@ -1,0 +1,101 @@
+﻿body {
+    margin: 0px;
+    padding: 0px;
+}
+
+header{
+    text-align:center;
+    height:200px;
+    background-image:linear-gradient(white,grey);
+    box-shadow:0px 5px 10px ;
+}
+
+#HeaderLabel{
+    font-size:25px;
+    font-family:fantasy;
+    height:200px;
+    line-height:200px;
+}
+
+#HeaderImg{
+    width:250px;
+    float:left;
+}
+
+#PaneauLateral{
+    margin-top:10px;
+    width:20%;
+    min-height:400px;
+    display:block;
+    border: solid 2px red;
+    max-height:1000px;
+    overflow-y:auto;
+    display:inline-block;
+}
+
+.GenreLateral{
+    width:100%;
+}
+
+.ArticleLateral{
+    border: solid 1px black;
+    border-radius:4px;
+    width:230px;
+    margin-top:2px;
+    height:50px;
+    line-height:100%;
+    background-color:white;
+}
+.ArticleLateral:hover{
+    background-color:green;
+    cursor:wait;
+}
+
+.GenreLateralNom{
+    border-radius:5px;
+    border: solid 2px black;
+    margin-top:5px;
+    padding-left:10px;
+    background-color:grey;
+}
+.ImageLateral{
+    max-height:50px;
+    max-width:100px;
+    display: inline;
+}
+
+.IndexMain{
+    background-color:#272727;
+    width:79%;
+    height:700px;
+    display:inline-block;
+    vertical-align:top;
+    margin-top:10px;
+    
+}
+
+#inputeNom {
+    width:600px;
+    height:25px;
+    
+}
+#inputeDescriptif {
+    width:600px;
+    height:200px;
+}
+#inputeGenre {
+
+}
+#inputeCollection {
+}
+
+.labelInput{
+    margin-left:10px;
+    width:100px;
+    display:inline-block;
+    vertical-align:top;
+}
+
+.divInput{
+    margin-top:10px;
+}
