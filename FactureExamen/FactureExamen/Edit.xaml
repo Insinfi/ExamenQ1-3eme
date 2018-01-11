@@ -1,0 +1,25 @@
+﻿<Window x:Class="FactureExamen.Edit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FactureExamen"
+        mc:Ignorable="d"
+        Title="Edit" Height="200" Width="400">
+    <DockPanel>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Width="150">Date</Label>
+                <TextBox Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Width="150">Montant</Label>
+                <TextBox Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Label Width="150">Acquittée</Label>
+                <CheckBox VerticalAlignment="Center"></CheckBox>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>

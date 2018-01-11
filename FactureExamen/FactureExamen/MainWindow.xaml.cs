@@ -39,7 +39,9 @@ namespace FactureExamen
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Guid tmp = Guid.Parse(((Button)sender).CommandParameter.ToString());
+            Edit edition = new Edit(tmp);
+            edition.ShowDialog();
         }
     }
 }
