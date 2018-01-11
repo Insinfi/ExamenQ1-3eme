@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Exam2014WPF"
         mc:Ignorable="d"
-        Title="EditFacture" Height="138.529" Width="307.059">
+        Title="EditFacture" Height="217.058" Width="399.706">
     <StackPanel Orientation="Vertical">
-        <StackPanel Orientation="Horizontal" Margin=" 5" Height="*" >
+        <StackPanel Orientation="Horizontal" Margin=" 5" Height="25" Width="Auto" >
             <Label Height="25" Margin="5,0,0,0">Date:</Label>
             <Canvas>
                 <TextBox Height="25" Width="150" Canvas.Left="91" />

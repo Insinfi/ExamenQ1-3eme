@@ -1,0 +1,86 @@
+﻿<Window x:Class="RevisionWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RevisionWPF"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self},Path=mwvm}"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:DateTimeToBrushConverter x:Key="dateTimeConverter"></local:DateTimeToBrushConverter>
+        <local:PhotoConverter x:Key="PhotoConverter"></local:PhotoConverter>
+        <Style x:Key="BlueStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="BirthDay" TargetType="Label">
+            <Setter Property="Foreground" Value="{Binding Path=CurrentContact.BirthDay, Converter={StaticResource dateTimeConverter}}" />
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="A propos de"></MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem HorizontalAlignment="Right" Name="Heure"></StatusBarItem>
+        </StatusBar>
+        <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+            <ListBox SelectionChanged="ListBox_SelectionChanged" ItemsSource="{Binding ContactList, Mode=TwoWay}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Green" BorderThickness="1" Margin="0,0,10,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="50" Height="50" Source="{Binding Photo, Converter={StaticResource PhotoConverter}}"></Image>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Margin="5" MinWidth="75" Content="{Binding Nom, Mode=TwoWay}"/>
+                                        <Label Margin="5" MinWidth="75" Content="{Binding Prenom, Mode=TwoWay}"/>
+                                    </StackPanel>
+                                    <Label Margin="5" MinWidth="75" Content="{Binding Gsm, Mode=TwoWay}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <Border BorderBrush="Blue" BorderThickness="1" Margin="0,0,10,0">
+                <StackPanel Orientation="Vertical" Width="202">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Margin="5" MinWidth="75" Content="Nom:" Style="{StaticResource BlueStyle}" />
+                        <Label Margin="5" MinWidth="75" Content="{Binding Path=CurrentContact.Nom, Mode=TwoWay}"></Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Margin="5" MinWidth="75" Content="Prenom:" Style="{StaticResource BlueStyle}" />
+                        <Label Margin="5" MinWidth="75" Content="{Binding Path=CurrentContact.Prenom, Mode=TwoWay}"></Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Margin="5" MinWidth="75" Content="Gsm:" Style="{StaticResource BlueStyle}" />
+                        <Label Margin="5" MinWidth="75" Content="{Binding Path=CurrentContact.Gsm, Mode=TwoWay}"></Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Margin="5" MinWidth="75" Content="Rue:" Style="{StaticResource BlueStyle}" />
+                        <Label Margin="5" MinWidth="75" Content="{Binding Path=CurrentContact.Rue, Mode=TwoWay}"></Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Margin="5" MinWidth="75" Content="Localité:" Style="{StaticResource BlueStyle}" />
+                        <Label Margin="5" MinWidth="75" Content="{Binding Path=CurrentContact.Localite, Mode=TwoWay}"></Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Margin="5" MinWidth="75" Content="Naissance:" Style="{StaticResource BlueStyle}" />
+                        <Label Margin="5" MinWidth="75" Content="{Binding Path=CurrentContact.BirthDay, Mode=TwoWay}" Style="{StaticResource BirthDay}"></Label>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <DataGrid ItemsSource="{Binding RDVList, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Date" Width="*" Binding="{Binding DateHeureRV,StringFormat={}{0:dd/MM/yyyy}}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Commentraire" Width="*" Binding="{Binding Commentaire}" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </DockPanel>
+</Window>
