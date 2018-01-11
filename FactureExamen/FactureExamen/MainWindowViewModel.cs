@@ -11,6 +11,7 @@ namespace FactureExamen
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public List<GetAllClientsResult> ClientList { get; set; }
+        public List<GetClientFactureResult> FactureList { get; set; }
         public MainWindowViewModel()
         {
             DataClasses1DataContext myContext = new DataClasses1DataContext();
@@ -24,5 +25,13 @@ namespace FactureExamen
                 handler(this, new PropertyChangedEventArgs(PropertyName));
             }
         }
+
+        public void GetFacture(Guid id)
+        {
+            DataClasses1DataContext mycontext = new DataClasses1DataContext();
+            FactureList= mycontext.GetClientFacture(id).ToList();
+            OnPropertyChanged("FactureList");
+        }
+
     }
 }

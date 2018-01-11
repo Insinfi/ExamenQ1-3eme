@@ -29,6 +29,16 @@ namespace FactureExamen
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ListBox tmp = (ListBox)sender;
+            GetAllClientsResult user = (GetAllClientsResult)tmp.SelectedItem;
+            if (user != null)
+            {
+                mwvm.GetFacture(user.ClientId);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

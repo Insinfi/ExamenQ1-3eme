@@ -68,6 +68,13 @@ namespace FactureExamen
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<GetAllClientsResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetClientFacture")]
+		public ISingleResult<GetClientFactureResult> GetClientFacture([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id", DbType="UniqueIdentifier")] System.Nullable<System.Guid> id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((ISingleResult<GetClientFactureResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class GetAllClientsResult
@@ -145,6 +152,86 @@ namespace FactureExamen
 				if ((this._FactureNombreNonAquit != value))
 				{
 					this._FactureNombreNonAquit = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetClientFactureResult
+	{
+		
+		private System.Guid _FactureID;
+		
+		private System.Nullable<System.DateTime> _Date;
+		
+		private System.Nullable<double> _Montant;
+		
+		private System.Nullable<bool> _Acquit;
+		
+		public GetClientFactureResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FactureID", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid FactureID
+		{
+			get
+			{
+				return this._FactureID;
+			}
+			set
+			{
+				if ((this._FactureID != value))
+				{
+					this._FactureID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this._Date = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Montant", DbType="Float")]
+		public System.Nullable<double> Montant
+		{
+			get
+			{
+				return this._Montant;
+			}
+			set
+			{
+				if ((this._Montant != value))
+				{
+					this._Montant = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Acquit", DbType="Bit")]
+		public System.Nullable<bool> Acquit
+		{
+			get
+			{
+				return this._Acquit;
+			}
+			set
+			{
+				if ((this._Acquit != value))
+				{
+					this._Acquit = value;
 				}
 			}
 		}

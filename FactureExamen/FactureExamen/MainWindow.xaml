@@ -11,7 +11,7 @@
         <DataTemplate x:Key="StatusOn">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <Label Margin="3" HorizontalAlignment="Left" Content="{Binding Nom}">
+                    <Label Margin="0" HorizontalAlignment="Left" Content="{Binding Nom}">
                         <Label.Style>
                             <Style TargetType="Label">
                                 <Setter Property="FontWeight" Value="Bold"></Setter>
@@ -23,9 +23,9 @@
                             </Style>
                         </Label.Style>
                     </Label>
-                    <Label Margin="3" HorizontalAlignment="Right" Content="{Binding FactureNombre}" />
-                    <Label HorizontalAlignment="Right" Content="/" />
-                    <Label Margin="3" HorizontalAlignment="Right" Content="{Binding FactureNombreNonAquit}">
+                    <Label HorizontalAlignment="Right" Content="{Binding FactureNombre}"/>
+                    <Label Content="/" />
+                    <Label  HorizontalAlignment="Right" Content="{Binding FactureNombreNonAquit}">
                         <Label.Style>
                             <Style TargetType="Label">
                                 <Setter Property="FontWeight" Value="Bold"></Setter>
@@ -58,8 +58,12 @@
             </MenuItem>
             <MenuItem Header="A propos"></MenuItem>
         </Menu>
-        <ListBox DockPanel.Dock="Left" ItemsSource="{Binding ClientList, Mode=TwoWay}" Width="250" SelectionChanged="ListBox_SelectionChanged">
-            <ListBox.ItemTemplate >
+        <StatusBar DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+            <Label Content="Nombre de clients :" ></Label>
+            <Label Content="{Binding ClientList.Count}"></Label>
+        </StatusBar>
+        <ListBox DockPanel.Dock="Left" ItemsSource="{Binding ClientList, Mode=TwoWay}" SelectionChanged="ListBox_SelectionChanged" Width="100">
+            <ListBox.ItemTemplate > 
                 <DataTemplate>
                     <ContentControl Content="{Binding}">
                         <ContentControl.Style>
@@ -75,9 +79,41 @@
                             </Style>
                         </ContentControl.Style>
                     </ContentControl>
-
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <DataGrid ItemsSource="{Binding FactureList, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" Name="DG" Width="400">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date" Width="*" Binding="{Binding Date,StringFormat={}{0:dd/MM/yyyy}}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Montant" Width="*" Binding="{Binding Montant}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Acquit" Width="*" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label>
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Acquit}" Value="True">
+                                                <Setter Property="Content" Value="Acquittée"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Acquit}" Value="False">
+                                                <Setter Property="Content" Value="Retard de paiement"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Button_Click">E</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </DockPanel>
 </Window>

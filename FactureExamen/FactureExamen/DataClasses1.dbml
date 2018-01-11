@@ -8,4 +8,13 @@
       <Column Name="FactureNombreNonAquit" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.GetClientFacture" Method="GetClientFacture">
+    <Parameter Name="Id" Parameter="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="GetClientFactureResult">
+      <Column Name="FactureID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Montant" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Acquit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>
