@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/StyleSheet/StyleSheet1.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+    <title>Index</title>
+
+    <script>
+        $(document).ready(function () {
+            $(".categorie").on("click", function () {
+                $(this).parent().children(".content").toggle();
+            });
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <div id="Header">
+            <a href="Index">
+               <img id="HomeReturn" src="~/Picture/csharp.png" />
+            </a>
+        </div>
+        <div id="titre">
+            <h1 id="Title">My Title</h1>
+        </div>
+    </div>
+    
+    <div id="Article">
+        <div>
+            <div id="titre1" class="categorie">Qu'est-ce que le Lorem Ipsum?</div>
+            <div id="texte1" class=" content">
+                <div class="content-article">
+                    <label>Article1</label>
+
+                    <img class="img-content" src="~/Picture/37af0eed7b98404c254d75fc08e8010b.png" />
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="titre2" class="categorie">D'où vient-il?</div>
+            <div id="texte2" class="content">
+                <div class="content-article">
+                    <label>Article2</label>
+                    <img class="img-content" src="~/Picture/yande.re 416753.jpg" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div id="info">
+        <label>Nom:</label><input type="text" />
+        <br />
+        <p><label id="desc">Description:</label><textarea></textarea></p>
+        <br />
+        <label>Jesaispas</label><select><option>a</option> <option>b</option></select>
+        <br />
+        <label>jesaispas</label><select><option>a</option> <option>b</option></select>
+        <br />
+        <button>Submit</button>
+    </div>
+</body>
+</html>

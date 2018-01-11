@@ -90,7 +90,7 @@
         <Button>Bouton</Button>
         <Button Style="{StaticResource myButton}" Margin="10,0,0,0"></Button>
         <Button Style="{StaticResource Over}" Margin="10,0,0,0">Triggered</Button>
-        <TextBox Margin="-400,10,0,200" Width="181">je suis du text</TextBox>
+        <TextBox Margin="-400,10,0,200" Width="181" Height="100">je suis du text</TextBox>
         <ListBox ItemsSource="{Binding UsersList, Mode=TwoWay}" Width="150" Height="80" Margin="-400,150,0,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -120,7 +120,9 @@
         </StackPanel>
 
         <TextBox Margin="-400,150,0,0" Width="181" Height="90" Style="{StaticResource TestError}"></TextBox>
-
+        <CheckBox Name="Protect" Margin="-100,200,0,0" Height="20">Protected</CheckBox>
+        <Button Name="Validation" Margin="-100,100,0,0" Height="20" Validation.Error="Validation_Error">Protected</Button>
+        
     </DockPanel>
 </Window>
     

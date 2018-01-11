@@ -1,0 +1,99 @@
+﻿<Window x:Class="Exam2014WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Exam2014WPF"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self},Path=mwvm}" 
+        Title="MainWindow" Height="350" Width="525">
+    
+    <Window.Resources>
+        <DataTemplate x:Key="StatusOn">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label Margin="3" HorizontalAlignment="Left" Content="{Binding Nom}">
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding FactureNombreNonAquit}" Value="0">
+                                        <Setter Property="FontWeight" Value="Normal"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                    <Label Margin="3" HorizontalAlignment="Right" Content="{Binding FactureNombre}" />
+                    <Label HorizontalAlignment="Right" Content="/" />
+                    <Label Margin="3" HorizontalAlignment="Right" Content="{Binding FactureNombreNonAquit}">
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                <Setter Property="Foreground" Value="Red"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding FactureNombreNonAquit}" Value="0">
+                                        <Setter Property="FontWeight" Value="Normal"></Setter>
+                                        <Setter Property="Foreground" Value="Black"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="StatusOff">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label Margin="3" HorizontalAlignment="Left" Content="{Binding Nom}" />
+                    <Label Margin="3" HorizontalAlignment="Right" Content="{Binding FactureNombre}" />
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    
+    <DockPanel LastChildFill="False">
+
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Affichage" Name="status">
+                <MenuItem Name="statuscheck" Header="Status des factures" IsCheckable="True" IsEnabled="True"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="A propos de"></MenuItem>
+        </Menu>
+        
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem HorizontalAlignment="Right" >
+                <StackPanel Orientation="Horizontal">
+                    <Label>Nombre de clients:</Label>
+                    <Label Content="{Binding Clients.Count}"></Label>
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+
+        <ListBox ItemsSource="{Binding Clients, Mode=TwoWay}" Width="150" Height="Auto" SelectionChanged="ListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+
+                    <ContentControl Content="{Binding}">
+                        <ContentControl.Style>
+                            <Style TargetType="ContentControl">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=IsChecked,ElementName=statuscheck}" Value="True">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource StatusOn}"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Path=IsChecked,ElementName=statuscheck}" Value="False">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource StatusOff}"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <DataGrid ItemsSource="{Binding Facture}" Height="Auto" Width="Auto"></DataGrid>
+    </DockPanel>
+</Window>

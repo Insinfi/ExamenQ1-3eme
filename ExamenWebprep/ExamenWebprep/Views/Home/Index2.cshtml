@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/StyleSheet/StyleSheet2.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+    <title>Index</title>
+
+    <script>
+        $(document).ready(function () {
+            $(".categorie").on("click", function () {
+                $(this).parent().children(".content").toggle();
+            });
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <div id="Header">
+            <img id="HomeReturn" src="~/Picture/csharp.png" />
+        
+            <h1 id="Title">My Title</h1>
+        </div>
+    </div>
+
+    <div id="Article">
+        <div>
+            <div id="titre1" class="categorie">Qu'est-ce que le Lorem Ipsum?</div>
+            <div id="texte1" class=" content">
+                <div>
+                    <label>Article1</label>
+
+                    <img src="~/Picture/37af0eed7b98404c254d75fc08e8010b.png" />
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="titre2" class="categorie">D'où vient-il?</div>
+            <div id="texte2" class="content">
+                <div>
+                    <label>Article2</label>
+                    <img src="~/Picture/yande.re 416753.jpg" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
