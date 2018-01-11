@@ -83,6 +83,15 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <DataGrid ItemsSource="{Binding FactureList, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" Name="DG" Width="400">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Acquit}" Value="False">
+                            <Setter Property="Foreground" Value="Red"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Width="*" Binding="{Binding Date,StringFormat={}{0:dd/MM/yyyy}}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Montant" Width="*" Binding="{Binding Montant}" IsReadOnly="True"/>
@@ -98,6 +107,7 @@
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding Acquit}" Value="False">
                                                 <Setter Property="Content" Value="Retard de paiement"></Setter>
+                                                <Setter Property="Foreground" Value="Red"></Setter>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -106,13 +116,14 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                    <DataGridTemplateColumn>
+                <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="Button_Click">E</Button>
+                            <Button Click="Button_Click" CommandParameter="{Binding FactureID}">E</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>
