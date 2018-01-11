@@ -51,5 +51,10 @@ namespace ExamenWPFprep2
         {
             if(centrer!=null) centrer.Close();
         }
+
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Exercice1" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.1.28;Initial Catalog=Exercice1;User ID=Alex123" SettingsObjectName="Exam2014WPF.Properties.Settings" SettingsPropertyName="Exercice1ConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.GetInfoUser" Method="GetInfoUser">
+    <ElementType Name="GetInfoUserResult">
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FactureNombre" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FactureNombreNonAquit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

@@ -1,0 +1,56 @@
+﻿*{
+    border: 1px aqua solid;
+}
+
+body {
+    border: 0px aqua solid;
+    margin: 0px;
+    margin-top:0px;
+}
+
+#Header {
+    
+    background-image: linear-gradient(white,grey);
+    height: 80px;
+    width: 100%;
+    box-shadow: 0px 5px 10px 0px rgb(0,0,0);
+    border: 0px aqua solid;
+    text-align: left;
+}
+
+#Title {
+    position:relative;
+    margin-top: -87px;
+    line-height: 80px;
+    width: 100%;
+    height: 80px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    border: 2px red solid;
+    
+}
+
+#HomeReturn {
+    position:relative;
+    height: 80px;
+    width: 80px;
+    
+}
+
+
+categorie{
+
+}
+.categorie:hover{
+    cursor:pointer;
+}
+.content{
+    display:none;
+}
+#Article {
+    width: 300px;
+    float: left;
+    border: 1px red solid;
+    display:block;
+}
+

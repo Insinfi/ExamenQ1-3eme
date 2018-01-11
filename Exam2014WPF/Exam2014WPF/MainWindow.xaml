@@ -1,0 +1,56 @@
+﻿<Window x:Class="Exam2014WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Exam2014WPF"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self},Path=mwvm}" 
+        Title="MainWindow" Height="350" Width="525">
+    
+    <Window.Resources>
+        <Style x:Key="checked">
+            <Style.Triggers >
+                <DataTrigger Binding="{Binding Path=IsChecked,ElementName=statuscheck}"  Value="True"></DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
+    <DockPanel LastChildFill="False">
+
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Affichage" Name="status">
+                <MenuItem Name="statuscheck" Header="Status des factures" IsCheckable="True" IsEnabled="True"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="A propos de"></MenuItem>
+        </Menu>
+        
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem HorizontalAlignment="Right" >
+                <StackPanel Orientation="Horizontal">
+                    <Label>Nombre de clients:</Label>
+                    <Label>XXXXX</Label>
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+
+        <ListBox ItemsSource="{Binding Clients, Mode=TwoWay}" Width="150" Height="Auto">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    
+                    <StackPanel Orientation="Horizontal" Height="auto" Width="auto">
+                        <Label Name="Nomlb" Content="{Binding Nom}" ></Label>
+                        <TextBlock Text="{Binding FactureNombre}" ></TextBlock>
+                    </StackPanel>
+                    
+                    <DataTemplate.Triggers>
+                       
+                    </DataTemplate.Triggers>
+                    
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <DataGrid></DataGrid>
+    </DockPanel>
+</Window>
