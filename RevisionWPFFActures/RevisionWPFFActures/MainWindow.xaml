@@ -87,7 +87,7 @@
                 <DataGridTemplateColumn Header="" Width="*" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="Button_Click" CommandParameter="{Binding FatctureID}">
+                            <Button Click="Button_Click" CommandParameter="{Binding FactureID}">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Image Source="C:\Users\Rodolphe\Source\Repos\RevisionWPFFActures\RevisionWPFFActures\Image\pls.png"></Image>
