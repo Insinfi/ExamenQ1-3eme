@@ -110,6 +110,13 @@ namespace ExamenWeb01
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, gid, cid, nom, des);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetMyBalls")]
+		public ISingleResult<GetMyBallsResult> GetMyBalls([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((ISingleResult<GetMyBallsResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class GetAllArticleByGenreResult
@@ -533,6 +540,32 @@ namespace ExamenWeb01
 				if ((this._Descriptif != value))
 				{
 					this._Descriptif = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetMyBallsResult
+	{
+		
+		private System.Data.Linq.Binary _photo;
+		
+		public GetMyBallsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_photo", DbType="Image")]
+		public System.Data.Linq.Binary photo
+		{
+			get
+			{
+				return this._photo;
+			}
+			set
+			{
+				if ((this._photo != value))
+				{
+					this._photo = value;
 				}
 			}
 		}

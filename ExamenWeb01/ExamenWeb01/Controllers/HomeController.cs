@@ -38,6 +38,21 @@ namespace ExamenWeb01.Controllers
             mycontext.UpdateByID( Guid.Parse(idArticle), Guid.Parse(idGenre), Guid.Parse(idColl),Nom,Des);
             return RedirectToAction("Index");
         }
-        
+        public FileResult image(string id)
+        {
+            Guid articleID = Guid.Parse(id);
+            DataClasses1DataContext mycontext = new DataClasses1DataContext();
+            var test = mycontext.GetMyBalls(articleID).FirstOrDefault();
+            byte[] fileBytes = null;
+            if (test.photo==null)
+            {
+                fileBytes = System.IO.File.ReadAllBytes(Server.MapPath("~/Images/RodoDelPorg.png"));
+            }
+            else {
+                fileBytes =test.photo.ToArray();
+            }
+            return File(fileBytes, "image/png");
+        }
+
     }
 }
