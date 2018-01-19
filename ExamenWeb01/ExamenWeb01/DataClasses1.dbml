@@ -56,4 +56,10 @@
     <Parameter Name="Des" Parameter="des" Type="System.String" DbType="NVarChar(MAX)" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.GetMyBalls" Method="GetMyBalls">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="GetMyBallsResult">
+      <Column Name="photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

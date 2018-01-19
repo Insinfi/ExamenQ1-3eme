@@ -21,7 +21,7 @@
             $(".ArticleLateral").on("click", function () {
                 $(this).parent().parent().children().children('.ArticleLateral').css('background-color', '');
                 $(this).css('background-color', 'yellow');
-                var data = $(this).children(".IDToHide").val(); 
+                var data = $(this).children(".IDToHide").val();
                 $.ajax({
                     dataType: 'json',
                     type: "POST",
@@ -35,7 +35,15 @@
                 });
             });
 
-
+            @*var imgID = $(this).find('.ImageLateral').attr('id');
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("image")',
+                data: "id=" + imgID,
+                success: function (img) {
+                    alert("Cool");
+                }
+            });*@
 
 
         });
@@ -56,7 +64,7 @@
                     if(Article.Genreid == Genre.Genreid)
                     {
                         <div class="ArticleLateral">
-                            @*<img class="ImageLateral" id="@Article.Articleid"/>*@
+                            <img class="ImageLateral" src="/home/image/@Article.Articleid"/>
                             <input type="hidden" class="IDToHide" value="@Article.Articleid"/>
                             <div>
                                 <div>@Article.Nom</div>
