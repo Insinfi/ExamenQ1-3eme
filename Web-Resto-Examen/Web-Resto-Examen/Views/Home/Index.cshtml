@@ -1,0 +1,33 @@
+﻿@model List<GetAllCategorieResult>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ComboResto").on("change", function () {
+                $("#ListResto").load("/home/ListRestoView", { id: $("#ComboResto").find('option:selected').val()});
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <select name="combo" id="ComboResto">
+        @foreach (var cat in Model)
+        {
+            <option value="@cat.CategorieId">@cat.Nom</option>
+        }
+    </select>
+    <div id="ListResto">
+        @Html.Action("ListRestoView", new{ id = Guid.Empty})
+    </div>
+</body>
+</html>
