@@ -1,0 +1,11 @@
+﻿@model List<GetRestoInfoResult>
+
+<div>
+    @foreach(var resto in Model)
+    {
+        <div>
+            <label>@resto.Nom</label>
+            <img src="~/home/image/@resto.RestoId"/>
+        </div>
+    }
+</div>

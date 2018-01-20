@@ -1,34 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web;
 
-using System.Net.Http.Headers;
-using System.IO;
-
-namespace WebApi2.Controllers
+namespace WebAPIExamenResto.Controllers
 {
     public class HomeController : ApiController
     {
+        
         DataClasses1DataContext mycontext = new DataClasses1DataContext();
-        // GET: api/Home
 
-
-        public IEnumerable<GetInfoResult> GetInfo()
+        
+        public IEnumerable<GetRestoInfoResult> GetInfoResto()
         {
-            return mycontext.GetInfo();
-
+            var Resto=mycontext.GetRestoInfo();
+            return Resto;
         }
+        
+
+        public IEnumerable<GetComFromRestoResult>GetCom(string id)
+        {
+            Guid guid = Guid.Parse(id);
+            var com = mycontext.GetComFromResto(guid);
+            return com;
+        }
+        
         public HttpResponseMessage GetImage(string id)
         {
             Guid testID = Guid.Parse(id);
-            DataClasses1DataContext mycontext = new DataClasses1DataContext();
+            
             var test = mycontext.GetImage(testID).FirstOrDefault();
 
-            byte[] bytes = test.photo.ToArray();
+            byte[] bytes = test.Photo.ToArray();
 
             MemoryStream ms = new MemoryStream(bytes);
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
@@ -36,24 +42,6 @@ namespace WebApi2.Controllers
             response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
 
             return response;
-
         }
-
-
-        /*
-         
-        
-         
-         public byte [] GetImage(string id)
-        {
-            Guid testID = Guid.Parse(id);
-            DataClasses1DataContext mycontext = new DataClasses1DataContext();
-            var test = mycontext.GetImage(testID).FirstOrDefault();
-
-            byte[] bytes = test.photo.ToArray();
-            return bytes;
-
-        }*/
     }
-
 }
