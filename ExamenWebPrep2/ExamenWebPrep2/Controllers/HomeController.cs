@@ -4,6 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using RestSharp;
+using RestSharp.Deserializers;
+using System.Drawing;
+using System.IO;
+using System.Drawing.Imaging;
+
 namespace ExamenWebPrep2.Controllers
 {
     public class HomeController : Controller
@@ -17,24 +25,29 @@ namespace ExamenWebPrep2.Controllers
         public FileResult image(string id)
         {
 
-            Guid testID = Guid.Parse(id);
-            DataClasses1DataContext mycontext = new DataClasses1DataContext();
-            var test = mycontext.GetImage(testID).FirstOrDefault();
-
-            byte[] photo;
-
-
-
-            if (test.GetType() == typeof(System.DBNull))
+            var client = new RestClient("http://192.168.1.29:8080/api/home/"+id);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("cache-control", "no-cache");
+            IRestResponse response = client.Execute(request);
+            if (response.IsSuccessful)
             {
-                photo = System.IO.File.ReadAllBytes(Server.MapPath("~/Images/Kappa.png"));
+                //enregistrer l'image dans un dossier
+                string filename = string.Empty;
+                MemoryStream img = new MemoryStream(response.RawBytes);
+                Image imgDb = Image.FromStream(img);
+                filename = "imgDB.png";
+                var path = Server.MapPath("/Images/");
+                string FullPath = path + @"\" + filename;
+                imgDb.Save(FullPath);
+                //
+                return File(response.RawBytes, "image/png");
+
             }
             else
             {
-                photo = test.photo.ToArray();
+                return File("~/Images/Kappa.png", "image/png");
+
             }
-            
-            return File(photo, "image/png");
 
         }
     }
