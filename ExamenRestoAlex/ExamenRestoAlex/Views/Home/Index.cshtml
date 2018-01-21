@@ -1,0 +1,51 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+    <link href="~/Style/StyleSheet1.css" rel="stylesheet" />
+    <script>
+        
+        function ChangeCat() {
+            $("#BGRestoDiv").load("/home/RestoView", { id: $("#catCombo").find('option:selected').val() });
+        }
+        function ClickResto(restoid) {
+            //$.ajax({
+            //    url: "/Home/CommentaireView/",
+            //    type: 'GET',
+            //    data: { restoid: restoid },
+            //    cache: false,
+            //    success: function () {
+            //        alert("ok")
+            //        $('#commentaireRefresh').load("/home/CommentaireView");
+            //     },
+            //});
+            $("#commentaireRefresh").load("/home/CommentaireView", { restoid: restoid });
+            $(this).parent().children().removeClass("Brown");
+            $(this).addClass("Brown");
+
+        }
+
+        
+    </script>
+</head>
+<body>
+    <div>
+        @Html.Action("HeaderView")
+        @Html.Action("CategorieView")
+        @Html.Action("RestoView")
+        <div id="commentaireRefresh">
+            @Html.Action("CommentaireView")
+        </div>
+
+    </div>
+</body>
+</html>

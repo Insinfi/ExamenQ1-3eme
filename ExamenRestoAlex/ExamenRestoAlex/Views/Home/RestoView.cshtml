@@ -1,0 +1,26 @@
+﻿@model List<GetRestoInfoResult>
+
+<div id="BGRestoDiv">
+    @foreach(var resto in Model)
+    {
+    <div class="BGeachRestoDiv" name="@resto.RestoId" onclick="ClickResto('@resto.RestoId');">
+        <div class="ImgRestoDiv">
+            <img src="~/home/image/@resto.RestoId" class="ImgResto" />
+        </div>
+        <div class="DescriptionRestoDiv">
+            <label>Nom:</label><label>@resto.Nom</label><br>
+            <label>Adresse:</label><label>@resto.Adresse</label><br>
+            <label>Numero de téléphone:</label><label>@resto.Telephone</label><br>
+            <label>Catégorie:</label><label>@resto.Categorie</label><br>
+
+        </div>
+        @if (resto.Evaluation > 3)
+         {
+        <div class="ImgRestoBestDiv">
+            <img src="~/Images/best.png" class="ImgBestResto" />
+        </div>
+        }
+
+    </div>
+    }
+</div>
