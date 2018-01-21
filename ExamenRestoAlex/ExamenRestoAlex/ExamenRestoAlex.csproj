@@ -125,6 +125,11 @@
     </None>
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Images\best.png" />
+    <Content Include="Images\star1.png" />
+    <Content Include="Images\star2.png" />
+    <Content Include="Images\star3.png" />
+    <Content Include="Images\star4.png" />
+    <Content Include="Images\star5.png" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />

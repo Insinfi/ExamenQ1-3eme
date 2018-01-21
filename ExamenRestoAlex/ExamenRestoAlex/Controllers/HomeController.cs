@@ -18,11 +18,11 @@ namespace ExamenRestoAlex.Controllers
 
         List<GetCategorieResult> Categorie = new List<GetCategorieResult>();
         List<GetComFromRestoResult> CommentaireList = new List<GetComFromRestoResult>();
-        
+
         // GET: Home
         public ActionResult Index()
         {
-          
+
             return View();
         }
 
@@ -79,7 +79,7 @@ namespace ExamenRestoAlex.Controllers
                 }
             }
 
-            
+
             return PartialView(RestoList);
         }
 
@@ -90,15 +90,15 @@ namespace ExamenRestoAlex.Controllers
             request.AddHeader("cache-control", "no-cache");
             IRestResponse response = client.Execute(request);
 
-            Categorie= JsonConvert.DeserializeObject<List<GetCategorieResult>>(response.Content);
-            Categorie.Insert(0,new GetCategorieResult { CategorieId=Guid.Empty,Nom ="Toutes les catégories" });
-            
+            Categorie = JsonConvert.DeserializeObject<List<GetCategorieResult>>(response.Content);
+            Categorie.Insert(0, new GetCategorieResult { CategorieId = Guid.Empty, Nom = "Toutes les catégories" });
+
             return PartialView(Categorie);
         }
 
         public ActionResult CommentaireView(string restoid)
         {
-            var client = new RestClient("http://192.168.1.29:9000/api/home/GetCom/"+restoid);
+            var client = new RestClient("http://192.168.1.29:9000/api/home/GetCom/" + restoid);
             //var client = new RestClient("http://192.168.1.29:9000/api/home/GetCom/b109e736-8146-45ad-9bc3-05962165b19b");
 
             var request = new RestRequest(Method.GET);
@@ -110,10 +110,15 @@ namespace ExamenRestoAlex.Controllers
             {
                 CommentaireList = JsonConvert.DeserializeObject<List<GetComFromRestoResult>>(response.Content);
                 return PartialView(CommentaireList);
-            }  
+            }
             else
-            return PartialView("CommentaireView");
+                return PartialView("CommentaireView");
         }
 
+        public FileResult Star(string id)
+        {
+            
+            return File("~/Images/star" + id + ".png", "image/png");
+        }
     }
 }

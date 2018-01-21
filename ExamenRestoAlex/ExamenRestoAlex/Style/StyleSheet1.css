@@ -4,7 +4,7 @@
 }
 
 #BGHeaderDiv {
-    background-color:aqua;
+    background-color:wheat;
     height:100px;
     width:auto;
 }
@@ -17,7 +17,7 @@
 }
 #BGCategorieDiv {
     
-    background-color: palegreen;
+    background-color: dimgray;
     height: 50px;
     width: auto;
     line-height:50px;
@@ -30,14 +30,13 @@
     
 }
 #BGRestoDiv {
-    margin: 0px;
-    background-color: brown;
-    width: 500px;
+    background-color: dimgrey;
+    width: 520px;
     display: inline-block;
-    float:left;
-    position:absolute;
-    z-index:1;
-    height:100%;
+    float: left;
+    position: absolute;
+    z-index: 1;
+    height: 100%;
 }
 
 
@@ -47,20 +46,22 @@
     display: inline-block;
 }
 .ImgResto {
-    margin: 0px;
+    margin: 5px;
     height: 100px;
     border: 2px solid black;
     width: 100px;
 }
 .DescriptionRestoDiv {
-    margin: 0px;
-    border: 2px solid black;
+    position:absolute;
+    margin: 15px 0px 0px 15px ;
     display: inline-block;
 }
 .BGeachRestoDiv {
-    margin: 0px;
-    border: 2px solid black;
+    width:500px;
+    margin:10px 0px 0px 10px;
+    border:1px solid black;
     cursor: pointer;
+    background-color:gray;
 }
 
 #BGComDiv{
@@ -68,12 +69,12 @@
     margin:0px;
     height:100%;
     width:100%;
-    background-color:cornflowerblue;
+    background-color:dimgrey;
     display:inline-block;
     
 }
 .ComDiv{
-    margin-left:500px;
+    margin-left:520px;
     border:1px solid black;
     background-color:darkviolet;
 }
@@ -81,12 +82,24 @@
     background-color: brown;
 }
 .ImgRestoBestDiv {
+    position: absolute;
+    margin: 5px 0px 0px 280px;
     display: inline-block;
     width: 100px;
     height: 100px;
+    float: right;
 }
 .ImgBestResto {
     margin: 0px;
     width: 100px;
     height: 100px;
+}
+.ImgStarDiv{
+    position:absolute;
+    margin: 5px 0px 0px 220px;
+    display:inline;
+    
+}
+.ImgStar{
+    
 }
