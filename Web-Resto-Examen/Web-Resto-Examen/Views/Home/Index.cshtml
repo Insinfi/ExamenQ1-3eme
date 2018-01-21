@@ -10,10 +10,17 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <script src="~/Scripts/jquery-3.2.1.js"></script>
+    <link href="~/StyleSheet/StyleSheet1.css" rel="stylesheet" />
     <script type="text/javascript">
         $(document).ready(function () {
             $("#ComboResto").on("change", function () {
-                $("#ListResto").load("/home/ListRestoView", { id: $("#ComboResto").find('option:selected').val()});
+                $("#ListResto").load("/home/ListRestoView", { id: $("#ComboResto").find('option:selected').val() });
+            });
+
+            $(document).on("click", ".RestoItem", function () {
+                $(this).parent().children().removeClass("orange");
+                $(this).addClass("orange");
+                $("#ListCom").load("/home/ListComView", {id: $(this).children(".IDToHide").val() });
             });
         });
     </script>
@@ -28,6 +35,8 @@
     </select>
     <div id="ListResto">
         @Html.Action("ListRestoView", new{ id = Guid.Empty})
+    </div>
+    <div id="ListCom">
     </div>
 </body>
 </html>

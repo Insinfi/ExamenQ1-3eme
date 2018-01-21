@@ -1,0 +1,54 @@
+﻿body {
+    margin:0;
+    padding:0;
+}
+
+.RestoItem {
+    height: 200px;
+    width: 475px;
+    border: solid 1px red;
+    background-color:grey;
+}
+
+.RestoItem:hover {
+    background-color: red;
+    cursor: crosshair;
+}
+
+.ImgRestoItem {
+    height: auto;
+    width: auto;
+    max-height: 180px;
+    max-width: 150px;
+    display: inline-block;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.DivDataRestoItem {
+    display: inline-block;
+    border: solid 1px green;
+    margin-left:10px;
+    margin-top:10px;
+}
+
+.DivEva {
+    display:inline-block;
+    float:right;
+    margin-top:10px;
+    margin-right:10px;
+}
+
+.ImgEva {
+    height: 25px;
+}
+
+.ImgMed{
+    height: 30px;
+    display:block;
+}
+.orange{
+    background-color: orange;
+}
