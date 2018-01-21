@@ -44,5 +44,34 @@ namespace Web_Resto_Examen.Controllers
             return PartialView(restostri);
         }
 
+        public FileResult GetImage(Guid id)
+        {
+            DataClasses1DataContext mycontext = new DataClasses1DataContext();
+            var test = mycontext.GetRestoPhoto(id).FirstOrDefault();
+            byte[] fileBytes = null;
+            if (test.Photo == null)
+            {
+                fileBytes = System.IO.File.ReadAllBytes(Server.MapPath("~/Images/imawesome.jpg"));
+            }
+            else
+            {
+                fileBytes = test.Photo.ToArray();
+            }
+            return File(fileBytes, "image/png");
+        }
+        
+        public FileResult GetEva(int? eva)
+        {
+            byte[] fileBytes = null;
+            fileBytes = System.IO.File.ReadAllBytes(Server.MapPath("~/Images/eva"+ eva+".png"));
+            return File(fileBytes, "image/png");
+        }
+
+        public ActionResult ListComView(Guid id)
+        {
+            DataClasses1DataContext mc = new DataClasses1DataContext();
+            var restostri = mc.GetCommentraireByResto(id).ToList();
+            return PartialView(restostri);
+        }
     }
 }

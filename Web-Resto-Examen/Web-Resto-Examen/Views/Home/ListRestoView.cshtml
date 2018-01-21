@@ -2,6 +2,22 @@
 <div class="RestoItemList">
     @foreach(var Resto in Model)
     {
-        <div>@Resto.Nom</div>
+        <div class="RestoItem">
+            <img class="ImgRestoItem" src="/home/GetImage/@Resto.RestoId"/>
+            <div class="DivDataRestoItem">
+                <div>@Resto.Nom</div>
+                <div>@Resto.Telephone</div>
+                <div>@Resto.Adresse</div>
+                <div>@Resto.CategorieN</div>
+            </div>
+            <div class="DivEva">
+                <img class="ImgEva" src="@Url.Action("GetEva",new { eva= @Resto.Evalutation })"/>
+                @if(Resto.Evalutation >= 4)
+                {
+                    <img class="ImgMed" src="~/Images/med.png"/>
+                }
+            </div>
+            <input type="hidden" class="IDToHide" value="@Resto.RestoId"/>
+        </div>
     }
 </div>

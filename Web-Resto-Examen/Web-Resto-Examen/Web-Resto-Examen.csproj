@@ -106,10 +106,19 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Images\eva0.png" />
+    <Content Include="Images\eva1.png" />
+    <Content Include="Images\eva2.png" />
+    <Content Include="Images\eva3.png" />
+    <Content Include="Images\eva4.png" />
+    <Content Include="Images\eva5.png" />
+    <Content Include="Images\imawesome.jpg" />
+    <Content Include="Images\med.png" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="StyleSheet\StyleSheet1.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +149,7 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\Home\ListRestoView.cshtml" />
+    <Content Include="Views\Home\ListComView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

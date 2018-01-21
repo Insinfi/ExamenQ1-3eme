@@ -33,7 +33,7 @@ namespace Web_Resto_Examen
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbCours20172018ConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbCours20172018ConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -88,6 +88,13 @@ namespace Web_Resto_Examen
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<GetAllCategorieResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetRestoPhoto")]
+		public ISingleResult<GetRestoPhotoResult> GetRestoPhoto([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id", DbType="UniqueIdentifier")] System.Nullable<System.Guid> id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((ISingleResult<GetRestoPhotoResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -388,6 +395,32 @@ namespace Web_Resto_Examen
 				if ((this._Nom != value))
 				{
 					this._Nom = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetRestoPhotoResult
+	{
+		
+		private System.Data.Linq.Binary _Photo;
+		
+		public GetRestoPhotoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Photo", DbType="Image")]
+		public System.Data.Linq.Binary Photo
+		{
+			get
+			{
+				return this._Photo;
+			}
+			set
+			{
+				if ((this._Photo != value))
+				{
+					this._Photo = value;
 				}
 			}
 		}
