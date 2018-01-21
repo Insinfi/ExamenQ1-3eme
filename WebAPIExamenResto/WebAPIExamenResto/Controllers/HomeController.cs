@@ -43,5 +43,10 @@ namespace WebAPIExamenResto.Controllers
 
             return response;
         }
+        public IEnumerable<GetCategorieResult> GetCategorie()
+        {
+            var cat=mycontext.GetCategorie();
+            return cat;
+        }
     }
 }

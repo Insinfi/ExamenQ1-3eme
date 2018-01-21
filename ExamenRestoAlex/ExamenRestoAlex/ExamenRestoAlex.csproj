@@ -124,10 +124,12 @@
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Images\best.png" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Style\StyleSheet1.css" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
@@ -150,6 +152,9 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\Home\RestoView.cshtml" />
+    <Content Include="Views\Home\CategorieView.cshtml" />
+    <Content Include="Views\Home\HeaderView.cshtml" />
+    <Content Include="Views\Home\CommentaireView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,7 +164,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -69,18 +69,25 @@ namespace WebAPIExamenResto
 			return ((ISingleResult<GetComFromRestoResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetRestoInfo")]
-		public ISingleResult<GetRestoInfoResult> GetRestoInfo()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<GetRestoInfoResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetImage")]
 		public ISingleResult<GetImageResult> GetImage([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> id)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
 			return ((ISingleResult<GetImageResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetCategorie")]
+		public ISingleResult<GetCategorieResult> GetCategorie()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<GetCategorieResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetRestoInfo")]
+		public ISingleResult<GetRestoInfoResult> GetRestoInfo()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<GetRestoInfoResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -128,6 +135,76 @@ namespace WebAPIExamenResto
 		}
 	}
 	
+	public partial class GetImageResult
+	{
+		
+		private System.Data.Linq.Binary _Photo;
+		
+		public GetImageResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Photo", DbType="Image")]
+		public System.Data.Linq.Binary Photo
+		{
+			get
+			{
+				return this._Photo;
+			}
+			set
+			{
+				if ((this._Photo != value))
+				{
+					this._Photo = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetCategorieResult
+	{
+		
+		private string _Nom;
+		
+		private System.Guid _CategorieId;
+		
+		public GetCategorieResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="NVarChar(50)")]
+		public string Nom
+		{
+			get
+			{
+				return this._Nom;
+			}
+			set
+			{
+				if ((this._Nom != value))
+				{
+					this._Nom = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategorieId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid CategorieId
+		{
+			get
+			{
+				return this._CategorieId;
+			}
+			set
+			{
+				if ((this._CategorieId != value))
+				{
+					this._CategorieId = value;
+				}
+			}
+		}
+	}
+	
 	public partial class GetRestoInfoResult
 	{
 		
@@ -139,11 +216,11 @@ namespace WebAPIExamenResto
 		
 		private string _Telephone;
 		
+		private System.Nullable<System.Guid> _CategorieId;
+		
 		private string _Categorie;
 		
 		private System.Nullable<int> _Evaluation;
-		
-		private System.Data.Linq.Binary _Photo;
 		
 		public GetRestoInfoResult()
 		{
@@ -213,6 +290,22 @@ namespace WebAPIExamenResto
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategorieId", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> CategorieId
+		{
+			get
+			{
+				return this._CategorieId;
+			}
+			set
+			{
+				if ((this._CategorieId != value))
+				{
+					this._CategorieId = value;
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categorie", DbType="NVarChar(50)")]
 		public string Categorie
 		{
@@ -241,48 +334,6 @@ namespace WebAPIExamenResto
 				if ((this._Evaluation != value))
 				{
 					this._Evaluation = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Photo", DbType="Image")]
-		public System.Data.Linq.Binary Photo
-		{
-			get
-			{
-				return this._Photo;
-			}
-			set
-			{
-				if ((this._Photo != value))
-				{
-					this._Photo = value;
-				}
-			}
-		}
-	}
-	
-	public partial class GetImageResult
-	{
-		
-		private System.Data.Linq.Binary _Photo;
-		
-		public GetImageResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Photo", DbType="Image")]
-		public System.Data.Linq.Binary Photo
-		{
-			get
-			{
-				return this._Photo;
-			}
-			set
-			{
-				if ((this._Photo != value))
-				{
-					this._Photo = value;
 				}
 			}
 		}

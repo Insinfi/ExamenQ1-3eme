@@ -1,0 +1,11 @@
+﻿@model List<GetCategorieResult>
+
+<div id="BGCategorieDiv">
+    <select id="catCombo" onchange="ChangeCat();">
+        @foreach (var cat in Model)
+        {
+          <option value="@cat.CategorieId">@cat.Nom</option>
+        }
+    </select>
+    
+</div>

@@ -1,0 +1,20 @@
+﻿
+@model List<GetComFromRestoResult>
+<div id="BGComDiv">
+    @if (Model != null)
+    {
+        foreach (var com in Model)
+        {
+            <div class="ComDiv">
+                <label>@com.Nom</label><br />
+                <span>@com.Commentaire</span>
+            </div>
+        }
+     }
+    else
+    {
+
+      
+    }
+
+</div>
